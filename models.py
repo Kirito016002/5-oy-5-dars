@@ -31,3 +31,23 @@ class Week:
             case _:
                 raise TypeError
         return result
+    
+
+def find_elements(data:list[int])->list:
+    # result = list()
+    # max_num = max(data)
+    # num = min(data)
+    # while num < max_num:
+    #     if num not in data:
+    #         result.append(num)
+    #     num += 1
+    # return result
+
+    # for i in range(min(data), max(data) +1):
+    #     if i not in data:
+    #         result.append(i)
+    # return result
+
+    return range(data)
+
+print(find_elements(10))
