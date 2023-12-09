@@ -29,7 +29,7 @@ class Bank:
             cls.__smen_id -= 1
             cls.__status_smen = False
             cursor.execute(f"DELETE FROM users;")
-            connection.commit
+            connection.commit()
             return "Complate !"
         else:
             return "Yopib bo`lmaydi. Hali smen boshlanmagan"
@@ -39,7 +39,8 @@ class Bank:
     def queue(cls):
         if cls.__status_smen:
             cursor.execute(f"INSERT INTO users (status, smen) VALUES (true, {cls.__smen_id});")
-            connection.commit
+            connection.commit()
+            return "Complate !"
         else:
             return "Smen hali boshlanmagan"
     
@@ -114,4 +115,22 @@ class Bank:
                 return "Hali commentlar yo`q"                
         else:
             return "Smen hali boshlanmagan"
+
+
+        
+    @classmethod
+    def show(cls):
+        cursor.execute("SELECT * FROM users;")
+        record = cursor.fetchall()
+        return record
+
+
+a = Bank
+print(a.start_smen())
+# print(a.queue())
+# print(a.the_person_being_served())
+print(a.service())
+# print(a.the_person_being_served())
+print(a.show())
+
 
